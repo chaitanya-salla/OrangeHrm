@@ -1,6 +1,7 @@
 package com.orangehrmlive.driver;
 
-import com.orangehrmlive.utils.ReadPropertyFile;
+import com.orangehrmlive.enums.ConfigProperties;
+import com.orangehrmlive.utils.PropertyUtils;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Objects;
@@ -15,7 +16,7 @@ public final class Driver {
         if(Objects.isNull(getDriver())) {
             setDriver(new ChromeDriver());
             getDriver().manage().deleteAllCookies();
-            getDriver().get(ReadPropertyFile.getProperty("url"));
+            getDriver().get(PropertyUtils.getProperty(ConfigProperties.URL));
         }
     }
 

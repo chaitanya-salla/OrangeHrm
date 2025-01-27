@@ -3,7 +3,6 @@
 <suite name="Smoke">
     <test name="TestName" parallel="methods" thread-count="2">
         <classes>
-            <class name="com.orangehrmlive.tests.HomePageTest" />
             <class name="com.orangehrmlive.tests.LoginPageTest" />
         </classes>
     </test>

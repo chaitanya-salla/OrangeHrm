@@ -1,18 +1,22 @@
 package com.orangehrmlive.tests;
 
 import com.orangehrmlive.base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import com.orangehrmlive.pages.HomePage;
+import com.orangehrmlive.pages.LoginPage;
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-
-import static com.orangehrmlive.driver.ThreadLocalDriver.getDriver;
 
 public final class LoginPageTest extends BaseTest {
 
     private LoginPageTest() {}
 
     @Test
-    public void testLoginPage() {
-        getDriver().findElement(By.name("q")).sendKeys("Selenium", Keys.ENTER);
+    public void loginLogoutTest() {
+        LoginPage loginPage = new LoginPage();
+        HomePage homePage  = loginPage.setUsername("Admin").setPassword("admin123").clickLoginButton();
+        homePage.clickUserDropdown()
+                .clickLogoutButton();
+        Assertions.assertThat(loginPage.getPageTitle())
+                .isEqualTo("OrangeHRM");
     }
 }
